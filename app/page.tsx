@@ -1,21 +1,23 @@
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Plus } from "lucide-react";
+import { getTodosAction } from "@/actions/todo.actions";
+// import { Button } from "@/components/ui/button";
+// import {
+//   Dialog,
+//   DialogContent,
+//   DialogDescription,
+//   DialogFooter,
+//   DialogHeader,
+//   DialogTitle,
+//   DialogTrigger,
+// } from "@/components/ui/dialog";
+// import { Input } from "@/components/ui/input";
+// import { Label } from "@/components/ui/label";
+// import { Plus } from "lucide-react";
 
-export default function Home() {
+export default async function Home() {
+  const todos = await getTodosAction();
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <Dialog>
+      {/* <Dialog>
         <DialogTrigger asChild>
           <Button variant="secondary" size={"lg"}>
             <Plus size={16} className="mr-1" /> New Todo
@@ -47,7 +49,8 @@ export default function Home() {
             <Button type="submit">Save changes</Button>
           </DialogFooter>
         </DialogContent>
-      </Dialog>
+      </Dialog> */}
+      {JSON.stringify(todos)}
     </div>
   );
 }

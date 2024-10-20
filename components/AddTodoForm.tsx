@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -36,7 +37,9 @@ const AddTodoForm = () => {
     mode: "onChange",
   });
 
-  const onSubmit = () => {};
+  const onSubmit = (data: todoFormValues) => {
+    console.log(data);
+  };
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -47,6 +50,7 @@ const AddTodoForm = () => {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Add New Todo</DialogTitle>
+          <DialogDescription>Make changes in your todo</DialogDescription>
         </DialogHeader>
         <div className="py-4">
           <Form {...form}>

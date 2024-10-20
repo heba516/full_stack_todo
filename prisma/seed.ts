@@ -8,8 +8,8 @@ async function main() {
   await prisma.todo.createMany({
       data: Array.from({ length : 20 }, () => (
           {
-          title: faker.lorem.text(),
-          body: faker.lorem.paragraph()
+          title: faker.lorem.words({max: 4, min: 2}),
+          body: faker.lorem.paragraph({max: 10, min: 3})
       }
         ))
   })

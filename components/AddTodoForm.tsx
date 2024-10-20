@@ -24,6 +24,7 @@ import { Plus } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { todoFormValues, todoFormSchema } from "@/schema";
+import { createTodoAction } from "@/actions/todo.actions";
 
 const AddTodoForm = () => {
   const defaultValues: Partial<todoFormValues> = {
@@ -37,8 +38,9 @@ const AddTodoForm = () => {
     mode: "onChange",
   });
 
-  const onSubmit = (data: todoFormValues) => {
+  const onSubmit = async (data: todoFormValues) => {
     console.log(data);
+    await createTodoAction(data);
   };
   return (
     <Dialog>

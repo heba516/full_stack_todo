@@ -6,10 +6,10 @@ const prisma = new PrismaClient()
 async function main() {
 
   await prisma.todo.createMany({
-      data: Array.from({ length : 20 }, () => (
+      data: Array.from({ length : 25 }, () => (
           {
-          title: faker.lorem.words({max: 4, min: 2}),
-          body: faker.lorem.paragraph({max: 10, min: 3})
+          title: faker.lorem.words({min: 2, max: 3}),
+          body: faker.lorem.words({min: 3, max: 5})
       }
         ))
   })

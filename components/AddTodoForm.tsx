@@ -101,6 +101,7 @@ const AddTodoForm = () => {
                         onCheckedChange={field.onChange}
                         name={field.name}
                         ref={field.ref}
+                        className="mr-2"
                       />
                     </FormControl>
                     <FormLabel>Compeleted</FormLabel>

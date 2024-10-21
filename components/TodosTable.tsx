@@ -11,6 +11,7 @@ import {
 import { Button } from "./ui/button";
 import { Pen, Trash } from "lucide-react";
 import { Todo } from "@/interfaces";
+import { Badge } from "./ui/badge";
 
 export function TodosTable({ todos }: { todos: Todo[] }) {
   return (
@@ -32,8 +33,14 @@ export function TodosTable({ todos }: { todos: Todo[] }) {
             <TableCell className="font-medium">{todo.id}</TableCell>
             <TableCell>{todo.title}</TableCell>
             <TableCell>{todo.body}</TableCell>
-            <TableCell>{todo.compeleted}</TableCell>
-            <TableCell>{todo.createdAt.getTime.toString()}</TableCell>
+            <TableCell>
+              {todo.compeleted ? (
+                <Badge>Compeleted</Badge>
+              ) : (
+                <Badge variant="secondary">Uncompeleted</Badge>
+              )}
+            </TableCell>
+            <TableCell>{todo.createdAt.toISOString()}</TableCell>
             <TableCell className="flex items-center justify-end space-x-2">
               <Button size={"icon"}>
                 <Pen />

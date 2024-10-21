@@ -18,7 +18,7 @@ export function TodosTable({ todos }: { todos: Todo[] }) {
       <TableCaption>Your Todo List</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[100px]">ID</TableHead>
+          {/* <TableHead className="w-[100px]">ID</TableHead> */}
           <TableHead>Title</TableHead>
           <TableHead>Description</TableHead>
           <TableHead>Compeleted</TableHead>
@@ -29,7 +29,7 @@ export function TodosTable({ todos }: { todos: Todo[] }) {
       <TableBody>
         {todos.map((todo) => (
           <TableRow key={todo.id}>
-            <TableCell className="font-medium">{todo.id}</TableCell>
+            {/* <TableCell className="font-medium">{todo.id}</TableCell> */}
             <TableCell>{todo.title}</TableCell>
             <TableCell>{todo.body}</TableCell>
             <TableCell>
@@ -41,7 +41,7 @@ export function TodosTable({ todos }: { todos: Todo[] }) {
             </TableCell>
             <TableCell>{todo.createdAt.toISOString()}</TableCell>
             <TableCell>
-              <TodosTableActions id={todo.id} />
+              <TodosTableActions key={todo.id} id={todo.id} todo={todo} />
             </TableCell>
           </TableRow>
         ))}

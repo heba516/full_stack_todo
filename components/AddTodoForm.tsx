@@ -30,6 +30,7 @@ import { useState } from "react";
 import LoadingSpinner from "./LoadingSpinner";
 
 const AddTodoForm = () => {
+  const [open, setOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
   const defaultValues: Partial<todoFormValues> = {
@@ -48,9 +49,11 @@ const AddTodoForm = () => {
     setLoading(true);
     await createTodoAction(data);
     setLoading(false);
+    setOpen(false);
   };
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="secondary" size={"lg"}>
           <Plus size={16} className="mr-1" /> New Todo

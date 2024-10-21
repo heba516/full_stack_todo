@@ -25,11 +25,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { todoFormValues, todoFormSchema } from "@/schema";
 import { createTodoAction } from "@/actions/todo.actions";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const AddTodoForm = () => {
   const defaultValues: Partial<todoFormValues> = {
-    title: "Go to school",
-    body: "Go to school",
+    title: "",
+    body: "",
+    compeleted: false,
   };
 
   const form = useForm<todoFormValues>({
@@ -54,6 +56,7 @@ const AddTodoForm = () => {
           <DialogTitle>Add New Todo</DialogTitle>
           <DialogDescription>Make changes in your todo</DialogDescription>
         </DialogHeader>
+
         <div className="py-4">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -83,6 +86,23 @@ const AddTodoForm = () => {
                         {...field}
                       />
                     </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="compeleted"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormLabel>Compeleted</FormLabel>
                     <FormMessage />
                   </FormItem>
                 )}

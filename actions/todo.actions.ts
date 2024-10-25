@@ -6,17 +6,22 @@ import { revalidatePath } from 'next/cache';
   
 const prisma = new PrismaClient()
 
-export const getTodosAction = async () => {
+export const getUserTodosAction = async ({userId}:{userId: string | null}) => {
     return prisma.todo.findMany({
+        where: {
+            user_id: userId as string
+        },
         orderBy: {
             createdAt: "desc"
         }
     })
 };
-export const createTodoAction = async (data: todoFormValues) => {
+export const createTodoAction = async ({data, userId}: {data:todoFormValues, userId: string | null}) => {
+    
     await prisma.todo.create({
         data: {
-            ...data
+            user_id: userId as string,
+            ...data,
         }
     })
     revalidatePath("/");

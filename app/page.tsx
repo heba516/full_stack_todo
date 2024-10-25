@@ -1,14 +1,18 @@
-import { getTodosAction } from "@/actions/todo.actions";
+import { getUserTodosAction } from "@/actions/todo.actions";
 import TodoForm from "@/components/TodoForm";
 import { TodosTable } from "@/components/TodosTable";
+import { auth } from "@clerk/nextjs/server";
 
 export default async function Home() {
-  const todos = await getTodosAction();
+  const { userId } = await auth();
+  const todos = await getUserTodosAction({ userId });
+
   return (
-    <div className="my-4 p-1 lg:p-16 text-center space-y-8 font-[family-name:var(--font-geist-sans)]">
-      {/* grid grid-rows-[20px_1fr_20px] items-center justify-items-center
-      min-h-screen p-8 pb-20 gap-16 sm:p-20 */}
-      <TodoForm />
+    <div
+      className="grid grid-rows-[1fr_1fr_1fr_1fr] items-center justify-items-center
+      min-h-screen p-2 pb-20 gap-4 sm:px-10 font-[family-name:var(--font-geist-sans)]"
+    >
+      <TodoForm userId={userId} />
       <TodosTable todos={todos} />
     </div>
   );

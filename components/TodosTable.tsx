@@ -48,7 +48,9 @@ export function TodosTable({ todos }: { todos: Todo[] }) {
       </TableBody>
       <TableFooter>
         <TableRow>
-          <TableCell colSpan={5}>Total</TableCell>
+          <TableCell colSpan={5} className="text-left">
+            Total
+          </TableCell>
           <TableCell className="text-right">{todos.length}</TableCell>
         </TableRow>
       </TableFooter>

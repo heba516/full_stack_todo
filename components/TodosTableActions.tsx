@@ -13,7 +13,7 @@ const TodosTableActions = ({ id, todo }: { id: string; todo: Todo }) => {
 
   return (
     <div className="flex items-center justify-end space-x-2">
-      <TodoForm todo={todo} />
+      <TodoForm todo={todo} key={todo.id} />
       <Button
         size={"icon"}
         className="bg-red-700 hover:bg-red-800"

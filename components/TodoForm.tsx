@@ -30,7 +30,13 @@ import { useState } from "react";
 import LoadingSpinner from "./LoadingSpinner";
 import { Todo } from "@/interfaces";
 
-const TodoForm = ({ todo, userId }: { todo?: Todo; userId: string | null }) => {
+const TodoForm = ({
+  todo,
+  userId,
+}: {
+  todo?: Todo;
+  userId?: string | null;
+}) => {
   const [open, setOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -50,7 +56,7 @@ const TodoForm = ({ todo, userId }: { todo?: Todo; userId: string | null }) => {
     setLoading(true);
     if (todo) {
       await updateTodoAction(todo.id, data);
-    } else {
+    } else if (userId) {
       await createTodoAction({ data, userId });
     }
     setLoading(false);

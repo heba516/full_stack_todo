@@ -30,13 +30,11 @@ import { useState } from "react";
 import LoadingSpinner from "./LoadingSpinner";
 import { Todo } from "@/interfaces";
 
-const TodoForm = ({
-  todo,
-  userId,
-}: {
+interface IProps {
   todo?: Todo;
   userId?: string | null;
-}) => {
+}
+const TodoForm = ({ todo, userId }: IProps) => {
   const [open, setOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 

@@ -7,8 +7,12 @@ import LoadingSpinner from "./LoadingSpinner";
 import { useState } from "react";
 import TodoForm from "./TodoForm";
 import { Todo } from "@/interfaces";
+interface IProps {
+  id: string;
+  todo: Todo;
+}
 
-const TodosTableActions = ({ id, todo }: { id: string; todo: Todo }) => {
+const TodosTableActions = ({ id, todo }: IProps) => {
   const [loading, setLoading] = useState<boolean>(false);
 
   return (
